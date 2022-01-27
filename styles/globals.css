@@ -1,16 +1,10 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
+.btn-primary{
+  @apply bg-emerald-600 text-white hover:bg-emerald-500 ;
 }
-
-* {
-  box-sizing: border-box;
+.btn-big {
+  @apply text-xl px-8 py-4 rounded-lg;
 }
