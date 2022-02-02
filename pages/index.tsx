@@ -31,7 +31,7 @@ export default function Home() {
             <strong className="text-emerald-600 font-bold">building</strong>{" "}
             real projects!
             <br className="hidden sm:inline" />
-            Getting stuck? Having questions? Dont hesitate. Join the discord and{" "}
+            Getting stuck? Having questions? Don‘t hesitate. Join the discord and{" "}
             <strong className="text-emerald-600 font-bold">ask!</strong>
           </p>
 

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 const NavBar = () => {
   return (
@@ -11,14 +11,21 @@ const NavBar = () => {
       <nav>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/course">
+            <Link href="/">
               <a className="text-emerald-600 hover:underline">Login</a>
             </Link>
+          </li>
+          <li>
+            <div className="flex flex-col gap-2">
+              <div className="w-8 h-0.5 bg-emerald-600"></div>
+              <div className="w-8 h-0.5 bg-emerald-600"></div>
+              <div className="w-8 h-0.5 bg-emerald-600"></div>
+            </div>
           </li>
         </ul>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
