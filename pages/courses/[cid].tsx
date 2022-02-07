@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import { FC } from "react"
-import CourseWrapper from "../../components/CourseWrapper"
-import Layout from "../../components/Layout"
-import { getAllCourseCid, getLessons } from "../../lib/api"
+import CourseWrapper from "components/CourseWrapper"
+import Layout from "components/Layout"
+import { getAllCourseCid, getLessons } from "lib/api"
 
 interface Props {
   lessons: course
