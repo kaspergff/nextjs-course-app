@@ -1,6 +1,8 @@
 import { FC } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
+import { signOut } from "firebase/auth"
 import { auth } from "firebase_client/clientApp"
+import Link from "next/link"
 
 interface Props {
   showSideBar: Boolean
@@ -12,15 +14,38 @@ const SideBar: FC<Props> = ({ showSideBar }) => {
     if (user) {
       return (
         <ul className="mt-20 text-2xl font-semibold text-white">
-          <li className="mt-4">{user.displayName}</li>
-          <li className="mt-4">Courses</li>
+          <li className="mt-4 hover:underline">
+            <Link href={`/user`} passHref>
+              {user.displayName}
+            </Link>
+          </li>
+          <li className="mt-4 hover:underline">
+            <Link href={`/courses`} passHref>
+            Projects
+            </Link>
+          </li>
+          <li>
+            <button
+              onClick={() => signOut(auth)}
+              className="font-semibold mt-4 hover:underline">
+              Logout
+            </button>
+          </li>
         </ul>
       )
     } else {
       return (
         <ul className="mt-20 text-2xl font-semibold text-white">
-          <li className="mt-4">Login</li>
-          <li className="mt-4">Courses</li>
+          <li className="mt-4 hover:underline">
+            <Link href={`/login`} passHref>
+              Login
+            </Link>
+          </li>
+          <li className="mt-4 hover:underline">
+            <Link href={`/courses`} passHref>
+              Projects
+            </Link>
+          </li>
         </ul>
       )
     }

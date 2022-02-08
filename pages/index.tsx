@@ -15,7 +15,7 @@ export default function Home() {
         </div>
         <div className="text-center mt-14">
           <Link href="/courses">
-            <a className="btn btn-primary btn-big">Check the courses!</a>
+            <a className="btn btn-primary btn-big">Check projects!</a>
           </Link>
         </div>
 

@@ -59,7 +59,7 @@ const LoginPage: React.FC = () => {
   return (
     <Layout>
       <div className="flex flex-col items-center justify-center">
-        <div className="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10 mt-16">
+        <div className="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10 mt-10">
           <p
             tabIndex={0}
             className="focus:outline-none text-3xl font-bold leading-6 text-gray-800">

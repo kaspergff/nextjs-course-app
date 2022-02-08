@@ -1,10 +1,7 @@
-import fs, { readdir, readdirSync } from "fs"
+import fs from "fs"
 import matter from "gray-matter"
 import { join } from "path"
-import { unified } from "unified"
-import remarkParse from "remark-parse"
-import remarkHtml from "remark-html"
-import { read } from "to-vfile"
+
 
 export const baseDirectory = join(process.cwd(), "courses")
 

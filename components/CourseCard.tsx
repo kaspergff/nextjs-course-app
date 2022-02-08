@@ -9,7 +9,7 @@ const CourseCard: FC<CourseInfo> = ({ id, Title, Text_big, Text_small }) => {
         <a className="block relative">
           <Image
             alt="Course Pic"
-            src={`/../public/${id}.PNG`}
+            src={`/../public/project_images/${id}.PNG`}
             height="272px"
             width="272px"
             className="object-cover rounded-full"
@@ -29,7 +29,7 @@ const CourseCard: FC<CourseInfo> = ({ id, Title, Text_big, Text_small }) => {
         <div className="flex mt-8 items-center justify-center">
           <button className="btn btn-primary btn-big mx-4">
             <Link href={`/courses/${id}`} passHref>
-              <a className="block relative">Join the course!</a>
+              <a className="block relative">Check project</a>
             </Link>
           </button>
           <span className="text-gray-400 text-xl font-light">/</span>
