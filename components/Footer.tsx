@@ -6,7 +6,7 @@ const Footer: FC = () => {
     <footer className="bg-emerald-800 bg-opacity-90 text-pink-200 md:p-12 sm:p-8 p-4 leading-7">
       <p className="text-2xl mb-4">
         <Link href="/">
-          <a className="text-white">Learn how to build web3 applications</a>
+          <a className="text-white">Markdown based course website</a>
         </Link>
       </p>
       <p>
@@ -21,10 +21,10 @@ const Footer: FC = () => {
         (
         <a
           className="text-white"
-          href="https://twitter.com/KasperdeGraaff"
+          href="https://github.com/kaspergff"
           target="_blank"
           rel="noopener noreferrer">
-          @KasperdeGraaff
+          @kaspergff
         </a>
         )
       </p>
@@ -32,4 +32,4 @@ const Footer: FC = () => {
   );
 };
 
-export default Footer
+export default Footer;

@@ -15,4 +15,4 @@ export const courses: Array<CourseInfo> = [
     Text_small:
       "This project is an introduction to building decentralized applications on the Solana blockchain. Solana is know for crazy fast transactions with minimal gas fee's. We will build a smartcontract in Rust but no worries its its very basic and you don't need prior experiance to understand it!",
   },
-]
+];

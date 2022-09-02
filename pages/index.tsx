@@ -7,15 +7,15 @@ export default function Home() {
       <div className="flex flex-col items-center mb-8">
         <div className="flex flex-col self-stretch">
           <p className="text-center text-4xl mt-24 font-bold">
-            Learn how to build modern{" "}
-            <strong className="text-emerald-600 font-bold">Web3</strong>
-            <br className="hidden sm:inline" /> applications{" "}
-            <strong className="text-emerald-600 font-bold">for free!</strong>
+            Easy to use{" "}
+            <strong className="text-emerald-600 font-bold">courses </strong>
+            website
+            <strong className="text-emerald-600 font-bold"> template</strong>
           </p>
         </div>
         <div className="text-center mt-14">
           <Link href="/courses">
-            <a className="btn btn-primary btn-big">Check projects!</a>
+            <a className="btn btn-primary btn-big">Check courses!</a>
           </Link>
         </div>
 
@@ -25,19 +25,19 @@ export default function Home() {
           </p>
 
           <p className="text-center text-2xl mt-6 text-gray-500 leading-8">
-            Learn how to build{" "}
-            <strong className="text-emerald-600 font-bold">Web3</strong>{" "}
-            applications by{" "}
-            <strong className="text-emerald-600 font-bold">building</strong>{" "}
-            real projects!
+            Simple website to create online courses.
             <br className="hidden sm:inline" />
-            Getting stuck? Having questions? Don‘t hesitate. Join the discord and{" "}
-            <strong className="text-emerald-600 font-bold">ask!</strong>
+            Build with:{" "}
+            <strong className="text-emerald-600 font-bold">
+              Next js, tailwind and firebase{" "}
+            </strong>
           </p>
 
           <div className="text-center mt-12">
-            <a href="" className="btn btn-primary btn-big">
-              Join the Discord
+            <a
+              href="https://github.com/kaspergff/nextjs-course-app"
+              className="btn btn-primary btn-big">
+              check the source code
             </a>
           </div>
         </div>
