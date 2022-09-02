@@ -1,7 +1,10 @@
-import { auth } from "firebase_client/clientApp";
+import FirebaseApp from "firebase_client/clientApp";
 import Link from "next/link";
 import { Dispatch, FC, SetStateAction } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth(FirebaseApp);
 
 interface Props {
   showSideBar: Boolean;

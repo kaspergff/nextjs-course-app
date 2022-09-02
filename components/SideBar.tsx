@@ -1,14 +1,16 @@
-import { FC } from "react"
-import { useAuthState } from "react-firebase-hooks/auth"
-import { signOut } from "firebase/auth"
-import { auth } from "firebase_client/clientApp"
-import Link from "next/link"
+import { FC } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth, signOut } from "firebase/auth";
+import Link from "next/link";
+import FirebaseApp from "firebase_client/clientApp";
+
+const auth = getAuth(FirebaseApp);
 
 interface Props {
-  showSideBar: Boolean
+  showSideBar: Boolean;
 }
 const SideBar: FC<Props> = ({ showSideBar }) => {
-  const [user, loading, error] = useAuthState(auth)
+  const [user, loading, error] = useAuthState(auth);
 
   const menu = () => {
     if (user) {
@@ -21,7 +23,7 @@ const SideBar: FC<Props> = ({ showSideBar }) => {
           </li>
           <li className="mt-4 hover:underline">
             <Link href={`/courses`} passHref>
-            Projects
+              Projects
             </Link>
           </li>
           <li>
@@ -32,7 +34,7 @@ const SideBar: FC<Props> = ({ showSideBar }) => {
             </button>
           </li>
         </ul>
-      )
+      );
     } else {
       return (
         <ul className="mt-20 text-2xl font-semibold text-white">
@@ -47,9 +49,9 @@ const SideBar: FC<Props> = ({ showSideBar }) => {
             </Link>
           </li>
         </ul>
-      )
+      );
     }
-  }
+  };
 
   return (
     <>
@@ -60,7 +62,7 @@ const SideBar: FC<Props> = ({ showSideBar }) => {
         {menu()}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;
