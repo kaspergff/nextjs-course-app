@@ -1,30 +1,30 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react";
 
 interface Props {
-  nrOfLessons: number
-  navSetter: (num: number) => void
-  active: number
+  nrOfLessons: number;
+  navSetter: (num: number) => void;
+  active: number;
 }
 const CourseNavBar: FC<Props> = ({ nrOfLessons, navSetter, active }) => {
-  const [activeLesson, setactiveLesson] = useState(0)
+  const [activeLesson, setActiveLesson] = useState(0);
   // generate array to use map
-  const lessons = Array.from(Array(nrOfLessons).keys())
+  const lessons = Array.from(Array(nrOfLessons).keys());
 
   const classNameActive =
-    "page-link text-xl py-3 px-6 relative block border-0 bg-emerald-600 outline-none transition-all duration-300 rounded-md text-white hover:text-white hover:bg-emerald-500 shadow-md focus:shadow-md"
+    "page-link text-xl py-3 px-6 relative block border-0 bg-emerald-600 outline-none transition-all duration-300 rounded-md text-white hover:text-white hover:bg-emerald-500 shadow-md focus:shadow-md";
   const classNameNotActive =
-    "page-link text-xl py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+    "page-link text-xl py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none";
   const navButtonDisabled =
-    "page-link text-xl py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-500 pointer-events-none focus:shadow-none"
+    "page-link text-xl py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-500 pointer-events-none focus:shadow-none";
   const navButtonActive =
-    "page-link text-xl py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+    "page-link text-xl py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none";
 
-  const liActive = "page-item"
-  const liDisabled = "page-item disabled"
+  const liActive = "page-item";
+  const liDisabled = "page-item disabled";
 
   useEffect(() => {
-    setactiveLesson(active)
-  },[active])
+    setActiveLesson(active);
+  }, [active]);
 
   return (
     <nav className="grow-0 flex justify-center">
@@ -34,8 +34,8 @@ const CourseNavBar: FC<Props> = ({ nrOfLessons, navSetter, active }) => {
             onClick={() => {
               activeLesson == 0
                 ? console.log("not posible")
-                : setactiveLesson(activeLesson - 1)
-              navSetter(activeLesson - 1)
+                : setActiveLesson(activeLesson - 1);
+              navSetter(activeLesson - 1);
             }}
             className={activeLesson == 0 ? navButtonDisabled : navButtonActive}
             tabIndex={-1}
@@ -49,8 +49,8 @@ const CourseNavBar: FC<Props> = ({ nrOfLessons, navSetter, active }) => {
             <li key={index} className="page-item">
               <button
                 onClick={() => {
-                  setactiveLesson(index)
-                  navSetter(index)
+                  setActiveLesson(index);
+                  navSetter(index);
                 }}
                 className={
                   activeLesson == index ? classNameActive : classNameNotActive
@@ -58,15 +58,15 @@ const CourseNavBar: FC<Props> = ({ nrOfLessons, navSetter, active }) => {
                 {index + 1}
               </button>
             </li>
-          )
+          );
         })}
         <li className={activeLesson == nrOfLessons - 1 ? liDisabled : liActive}>
           <button
             onClick={() => {
               activeLesson == nrOfLessons - 1
                 ? console.log("not posible")
-                : setactiveLesson(activeLesson + 1)
-              navSetter(activeLesson + 1)
+                : setActiveLesson(activeLesson + 1);
+              navSetter(activeLesson + 1);
             }}
             className={
               activeLesson == nrOfLessons - 1
@@ -80,7 +80,7 @@ const CourseNavBar: FC<Props> = ({ nrOfLessons, navSetter, active }) => {
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default CourseNavBar
+export default CourseNavBar;
