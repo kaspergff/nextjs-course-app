@@ -1,8 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { FC } from "react";
-import CourseWrapper from "components/CourseWrapper";
-import Layout from "components/Layout";
 import { getAllCourseCid, getLessons } from "lib/api";
+
+import CourseWrapper from "components/CourseWrapper";
+import { FC } from "react";
+import Layout from "components/Layout";
 
 interface Props {
   lessons: course;
@@ -10,6 +11,8 @@ interface Props {
 
 // base page of every course
 const CoursePage: FC<Props> = ({ lessons }) => {
+  console.log(lessons);
+
   return (
     <Layout>
       <CourseWrapper course={lessons} />

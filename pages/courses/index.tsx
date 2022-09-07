@@ -1,28 +1,24 @@
-import Layout from "components/Layout";
+import { FC, Key } from "react";
 
-import Link from "next/link";
-import { getAllCourseCid } from "lib/api";
-import { FC } from "react";
 import CourseCard from "@/components/CourseCard";
-
-import { courses as json } from "courses/courses";
+import Layout from "components/Layout";
+import { getLessonInfo } from "lib/api";
 
 interface Props {
-  courses: string[];
+  lessonInfo: any;
 }
 
-const App: FC<Props> = ({ courses }) => {
+const App: FC<Props> = ({ lessonInfo }) => {
   return (
     <Layout>
-      {courses.map((courseTitle, i) => {
-        const jsonInfoCourse = json.filter((item) => item.id == courseTitle)[0];
+      {lessonInfo.map((course: info, i: Key) => {
         return (
           <CourseCard
             key={i}
-            id={jsonInfoCourse.id}
-            Title={jsonInfoCourse.Title}
-            Text_big={jsonInfoCourse.Text_big}
-            Text_small={jsonInfoCourse.Text_small}
+            id={course.cid}
+            Title={course.data.title}
+            Text_big={course.data.Text_big}
+            Text_small={course.data.Text_small}
           />
         );
       })}
@@ -31,10 +27,10 @@ const App: FC<Props> = ({ courses }) => {
 };
 
 export async function getStaticProps() {
-  const courses = getAllCourseCid();
+  const lessonInfo = getLessonInfo();
   return {
     props: {
-      courses,
+      lessonInfo,
     },
   };
 }

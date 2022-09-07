@@ -1,6 +1,7 @@
-import Image from "next/image"
-import Link from "next/link"
-import React, { FC } from "react"
+import React, { FC } from "react";
+
+import Image from "next/image";
+import Link from "next/link";
 
 const CourseCard: FC<CourseInfo> = ({ id, Title, Text_big, Text_small }) => {
   return (
@@ -37,7 +38,7 @@ const CourseCard: FC<CourseInfo> = ({ id, Title, Text_big, Text_small }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CourseCard
+export default CourseCard;

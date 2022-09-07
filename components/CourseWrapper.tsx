@@ -1,23 +1,24 @@
-import { FC, useState } from "react"
-import CourseNavBar from "./CourseNavBar"
-import LessonPage from "./LessonPage"
+import { FC, useState } from "react";
+
+import CourseNavBar from "./CourseNavBar";
+import LessonPage from "./LessonPage";
 
 interface Props {
-  course: course
+  course: course;
 }
 
 const CourseWrapper: FC<Props> = ({ course }) => {
-  const [activeLesson, setactiveLesson] = useState(0)
+  const [activeLesson, setactiveLesson] = useState(0);
 
-  const navSetter = (number: number) => setactiveLesson(number)
+  const navSetter = (number: number) => setactiveLesson(number);
   return (
     <div className="grow flex flex-col gap-4 ">
       <div>
-        <CourseNavBar
+        {/* <CourseNavBar
           active={activeLesson}
           navSetter={navSetter}
           nrOfLessons={course.length}
-        />
+        /> */}
       </div>
       <div className="grow ">
         <LessonPage lesson={course[activeLesson]} />
@@ -30,7 +31,7 @@ const CourseWrapper: FC<Props> = ({ course }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CourseWrapper
+export default CourseWrapper;

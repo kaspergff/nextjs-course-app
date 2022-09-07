@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Layout from "components/Layout";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         </div>
         <div className="text-center mt-14">
           <Link href="/courses">
-            <a className="btn btn-primary btn-big">Check courses!</a>
+            <a className="btn btn-primary btn-big">Check examples</a>
           </Link>
         </div>
 

@@ -33,7 +33,7 @@ const CourseNavBar: FC<Props> = ({ nrOfLessons, navSetter, active }) => {
           <button
             onClick={() => {
               activeLesson == 0
-                ? console.log("not posible")
+                ? console.log("not possible")
                 : setActiveLesson(activeLesson - 1);
               navSetter(activeLesson - 1);
             }}
