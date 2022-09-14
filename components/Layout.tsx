@@ -12,7 +12,7 @@ const Layout: FC = ({ children }) => {
     <>
       <div className="flex flex-col min-h-screen">
         <Head>
-          <title>Markdown course website </title>
+          <title>Markdown course website template </title>
         </Head>
         <NavBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
         <div className="grow flex flex-row">
