@@ -2,9 +2,9 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 
-import { doc, getDoc } from "firebase/firestore";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
-import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
@@ -25,6 +25,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const FirebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(FirebaseApp);
+//login providers
+export const googleProvider = new GoogleAuthProvider();
+// Sets the current language to the default device/browser preference.
+auth.useDeviceLanguage();
 export default FirebaseApp;
 
 // Initialize Cloud Firestore and get a reference to the service
@@ -39,4 +43,10 @@ export const checkEnrollment = async (userId: string, courseID: string) => {
   return { ...data };
 };
 
-export const enrollInCourse = async (userId: string, courseId: string) => {};
+export const enrollInCourse = async (userId: string, courseId: string) => {
+  const docRef = doc(firestore, "CourseEnrollment", userId);
+  const data = {
+    courseId: true,
+  };
+  await setDoc(docRef, { [courseId]: true }, { merge: true });
+};

@@ -1,13 +1,17 @@
+import { auth, googleProvider } from "@/lib/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 import { GoogleAuthProvider } from "firebase/auth";
 import Layout from "@/components/Layout";
 import Link from "next/link";
-import { auth } from "@/lib/firebase";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-const LoginPage: React.FC = () => {
+interface Props {
+  lastPage: string;
+}
+
+const LoginPage: React.FC<Props> = ({ lastPage }) => {
   //state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,16 +19,11 @@ const LoginPage: React.FC = () => {
   // routing
   const router = useRouter();
 
-  //login providers
-  const googleProvider = new GoogleAuthProvider();
-  // Sets the current language to the default device/browser preference.
-  auth.useDeviceLanguage();
-
   // login
   const submitForm = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/user");
+      router.push(lastPage);
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +35,7 @@ const LoginPage: React.FC = () => {
       await signInWithPopup(auth, googleProvider).then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        router.push("/user");
+        router.push(lastPage);
         const token = credential?.accessToken;
         // The signed-in user info.
         const user = result.user;

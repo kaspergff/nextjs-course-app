@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import FirebaseApp, { checkEnrollment } from "@/lib/firebase";
+import FirebaseApp, { checkEnrollment, enrollInCourse } from "@/lib/firebase";
 
 import CourseNavBar from "./CourseNavBar";
 import LessonPage from "./LessonPage";
@@ -17,15 +17,16 @@ interface Props {
 const CourseWrapper: FC<Props> = ({ course, cid }) => {
   const [activeLesson, setActiveLesson] = useState(0);
   const [user, loading, error] = useAuthState(auth);
-  const [enrollment, setEnrollment] = useState();
+  const [enrollment, setEnrollment] = useState(false);
+
+  const check = async () => {
+    if (user) {
+      const data = await checkEnrollment(user.uid, "Course-1");
+      if (data && data[cid]) setEnrollment(true);
+    }
+  };
 
   useEffect(() => {
-    const check = async () => {
-      if (user) {
-        const data = await checkEnrollment(user.uid, "Course-1");
-        if (data) setEnrollment(data[cid]);
-      }
-    };
     check();
   }, [user, cid]);
 
@@ -61,11 +62,14 @@ const CourseWrapper: FC<Props> = ({ course, cid }) => {
           <LessonPage lesson={course[activeLesson]} />
         </div>
         <div className="mx-auto w-content py-16">
-          <Link href="/login">
-            <a className="btn btn-primary btn-big ">
-              Click here to enroll in this course
-            </a>
-          </Link>
+          <button
+            onClick={async () => {
+              await enrollInCourse(user.uid, cid);
+              check();
+            }}
+            className="btn btn-primary btn-big ">
+            Click here to enroll in this course
+          </button>
         </div>
       </div>
     );
