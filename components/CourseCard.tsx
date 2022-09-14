@@ -10,7 +10,7 @@ const CourseCard: FC<CourseInfo> = ({ id, Title, Text_big, Text_small }) => {
         <a className="block relative">
           <Image
             alt="Course Pic"
-            src={`/../public/project_images/${id}.PNG`}
+            src={`/project_images/${id}.PNG`}
             height="272px"
             width="272px"
             className="object-cover rounded-full"
