@@ -53,7 +53,7 @@ const SignUpPage: React.FC = () => {
           <p
             tabIndex={0}
             className="focus:outline-none  mt-4 font-medium leading-none text-gray-500">
-            Allready have an account?{" "}
+            Already have an account?{" "}
             <Link href={"/login"}>
               <a className="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none  text-gray-800 cursor-pointer">
                 {" "}
