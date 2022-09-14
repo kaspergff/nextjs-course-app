@@ -24,7 +24,7 @@ const SideBar: FC<Props> = ({ showSideBar }) => {
           </li>
           <li className="mt-4 hover:underline">
             <Link href={`/courses`} passHref>
-              Projects
+              Courses
             </Link>
           </li>
           <li>

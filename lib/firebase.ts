@@ -34,7 +34,7 @@ export default FirebaseApp;
 // Initialize Cloud Firestore and get a reference to the service
 export const firestore = getFirestore(FirebaseApp);
 
-export const checkEnrollment = async (userId: string, courseID: string) => {
+export const checkEnrollment = async (userId: string) => {
   const docRef = doc(firestore, "CourseEnrollment", userId);
 
   const docSnap = await getDoc(docRef);

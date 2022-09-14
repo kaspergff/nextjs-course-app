@@ -21,7 +21,7 @@ const CourseWrapper: FC<Props> = ({ course, cid }) => {
 
   const check = async () => {
     if (user) {
-      const data = await checkEnrollment(user.uid, "Course-1");
+      const data = await checkEnrollment(user.uid);
       if (data && data[cid]) setEnrollment(true);
     }
   };
