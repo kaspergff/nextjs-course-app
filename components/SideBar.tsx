@@ -1,8 +1,9 @@
-import { FC } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth, signOut } from "firebase/auth";
+
+import { FC } from "react";
+import FirebaseApp from "@/lib/firebase";
 import Link from "next/link";
-import FirebaseApp from "firebase_client/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const auth = getAuth(FirebaseApp);
 

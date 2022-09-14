@@ -1,60 +1,61 @@
-import Layout from "@/components/Layout"
-import Link from "next/link"
-import { useState } from "react"
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
-import { auth } from "firebase_client/clientApp"
-import { useRouter } from "next/router"
-import { GoogleAuthProvider } from "firebase/auth"
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+
+import { GoogleAuthProvider } from "firebase/auth";
+import Layout from "@/components/Layout";
+import Link from "next/link";
+import { auth } from "@/lib/firebase";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 const LoginPage: React.FC = () => {
   //state
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // routing
-  const router = useRouter()
+  const router = useRouter();
 
   //login providers
-  const googleProvider = new GoogleAuthProvider()
+  const googleProvider = new GoogleAuthProvider();
   // Sets the current language to the default device/browser preference.
-  auth.useDeviceLanguage()
+  auth.useDeviceLanguage();
 
   // login
   const submitForm = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password)
-      router.push("/user")
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push("/user");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   // google login
   const googleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider).then(result => {
+      await signInWithPopup(auth, googleProvider).then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result)
-        router.push("/user")
-        const token = credential?.accessToken
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        router.push("/user");
+        const token = credential?.accessToken;
         // The signed-in user info.
-        const user = result.user
-      })
+        const user = result.user;
+      });
     } catch (error: any) {
-      const errorCode = error.code
-      const errorMessage = error.message
+      const errorCode = error.code;
+      const errorMessage = error.message;
       // The email of the user's account used.
-      const email = error.email
+      const email = error.email;
       // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error)
+      const credential = GoogleAuthProvider.credentialFromError(error);
       console.log({
         errorCode: errorCode,
         errorMessage: errorMessage,
         email: email,
         credential: credential,
-      })
+      });
     }
-  }
+  };
 
   return (
     <Layout>
@@ -156,9 +157,9 @@ const LoginPage: React.FC = () => {
             <hr className="w-full bg-gray-400  " />
           </div>
           <form
-            onSubmit={e => {
-              e.preventDefault()
-              submitForm()
+            onSubmit={(e) => {
+              e.preventDefault();
+              submitForm();
             }}>
             <div>
               <label
@@ -168,7 +169,7 @@ const LoginPage: React.FC = () => {
               </label>
               <input
                 required
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 aria-labelledby="email"
                 className="bg-gray-200 border rounded font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
@@ -184,7 +185,7 @@ const LoginPage: React.FC = () => {
               <div className="relative flex items-center justify-center">
                 <input
                   required
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   type="password"
                   className="bg-gray-200 border rounded  font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
@@ -215,6 +216,6 @@ const LoginPage: React.FC = () => {
         </div>
       </div>
     </Layout>
-  )
-}
-export default LoginPage
+  );
+};
+export default LoginPage;

@@ -1,19 +1,18 @@
-import Head from "next/head";
 import { FC, useEffect, useState } from "react";
-import NavBar from "./NavBar";
+
 import Footer from "./Footer";
+import Head from "next/head";
+import NavBar from "./NavBar";
 import SideBar from "./SideBar";
 
 const Layout: FC = ({ children }) => {
   const [showSideBar, setShowSideBar] = useState(false);
-  useEffect(() => {
-    console.log(showSideBar);
-  }, [showSideBar]);
+
   return (
     <>
       <div className="flex flex-col min-h-screen">
         <Head>
-          <title>Web3 Courses for web2 developers</title>
+          <title>Markdown course website</title>
         </Head>
         <NavBar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
         <div className="grow flex flex-row">

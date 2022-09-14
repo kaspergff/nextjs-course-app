@@ -1,6 +1,13 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/storage";
+
+import { doc, getDoc } from "firebase/firestore";
+
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,3 +26,17 @@ const firebaseConfig = {
 const FirebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(FirebaseApp);
 export default FirebaseApp;
+
+// Initialize Cloud Firestore and get a reference to the service
+export const firestore = getFirestore(FirebaseApp);
+
+export const checkEnrollment = async (userId: string, courseID: string) => {
+  const docRef = doc(firestore, "CourseEnrollment", userId);
+
+  const docSnap = await getDoc(docRef);
+  const data = docSnap.data();
+
+  return { ...data };
+};
+
+export const enrollInCourse = async (userId: string, courseId: string) => {};

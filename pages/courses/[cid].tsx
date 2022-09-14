@@ -7,26 +7,27 @@ import Layout from "components/Layout";
 
 interface Props {
   lessons: course;
+  cid: string;
 }
 
 // base page of every course
-const CoursePage: FC<Props> = ({ lessons }) => {
-  console.log(lessons);
-
+const CoursePage: FC<Props> = ({ lessons, cid }) => {
   return (
     <Layout>
-      <CourseWrapper course={lessons} />
+      <CourseWrapper course={lessons} cid={cid} />
     </Layout>
   );
 };
 
 // props
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const lessons = await getLessons(params?.cid as string);
+  const cid = params?.cid as string;
+  const lessons = await getLessons(cid);
 
   return {
     props: {
       lessons,
+      cid,
     },
   };
 };

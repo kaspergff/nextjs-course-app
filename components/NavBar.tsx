@@ -1,8 +1,9 @@
-import FirebaseApp from "firebase_client/clientApp";
-import Link from "next/link";
 import { Dispatch, FC, SetStateAction } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+
+import FirebaseApp from "@/lib/firebase";
+import Link from "next/link";
 import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const auth = getAuth(FirebaseApp);
 

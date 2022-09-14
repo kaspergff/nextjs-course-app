@@ -1,16 +1,17 @@
-import Layout from "@/components/Layout"
-import Link from "next/link"
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
-import { auth } from "firebase_client/clientApp"
-import { useState } from "react"
-import router from "next/router"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
+import Layout from "@/components/Layout";
+import Link from "next/link";
+import { auth } from "@/lib/firebase";
+import router from "next/router";
+import { useState } from "react";
 
 const SignUpPage: React.FC = () => {
   // state
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const submitForm = async () => {
     console.log({
@@ -18,27 +19,27 @@ const SignUpPage: React.FC = () => {
       l: lastName,
       e: email,
       p: password,
-    })
+    });
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password)
+      await createUserWithEmailAndPassword(auth, email, password);
       try {
         // set user name
         if (auth.currentUser) {
           await updateProfile(auth.currentUser, {
             displayName: firstName + " " + lastName,
-          })
-          router.push("/user")
+          });
+          router.push("/user");
         }
       } catch (error) {
         // set user name failed
-        console.log(error)
+        console.log(error);
       }
     } catch (error) {
       // creating user failed
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <Layout>
@@ -100,9 +101,9 @@ const SignUpPage: React.FC = () => {
             <hr className="w-full bg-gray-400  " />
           </div>
           <form
-            onSubmit={e => {
-              e.preventDefault()
-              submitForm()
+            onSubmit={(e) => {
+              e.preventDefault();
+              submitForm();
             }}>
             <div className="flex flex-row gap-2">
               <div>
@@ -112,7 +113,7 @@ const SignUpPage: React.FC = () => {
                   First name
                 </label>
                 <input
-                  onChange={e => setFirstName(e.target.value)}
+                  onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
                   required
                   aria-labelledby="firstName"
@@ -126,7 +127,7 @@ const SignUpPage: React.FC = () => {
                   Last name
                 </label>
                 <input
-                  onChange={e => setLastName(e.target.value)}
+                  onChange={(e) => setLastName(e.target.value)}
                   value={lastName}
                   required
                   aria-labelledby="lastName"
@@ -141,7 +142,7 @@ const SignUpPage: React.FC = () => {
                 Email
               </label>
               <input
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 required
                 type="email"
@@ -158,7 +159,7 @@ const SignUpPage: React.FC = () => {
               </label>
               <div className="relative flex items-center justify-center">
                 <input
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
                   type="password"
@@ -213,6 +214,6 @@ const SignUpPage: React.FC = () => {
         </div>
       </div>
     </Layout>
-  )
-}
-export default SignUpPage
+  );
+};
+export default SignUpPage;
